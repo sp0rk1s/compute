@@ -1,0 +1,9 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    { "item": "create_compute:ceramic_blend" }
+  ],
+  "results": [
+    { "id": "create_compute:unfired_ceramic_substrate" }
+  ]
+}

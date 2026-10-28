@@ -1,0 +1,15 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    { "item": "minecraft:clay_ball" },
+    { "item": "minecraft:bone_meal" },
+    { "item": "create:cinder_flour" }
+  ],
+  "results": [
+    {
+      "id": "compute:ceramic_blend",
+      "count": 2
+    }
+  ],
+  "heat_requirement": "heated"
+}

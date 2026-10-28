@@ -1,0 +1,10 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    { "item": "create_compute:ceramic_substrate" },
+    { "item": "create:golden_sheet" }
+  ],
+  "results": [
+    { "id": "create_compute:traced_ceramic_substrate" }
+  ]
+}

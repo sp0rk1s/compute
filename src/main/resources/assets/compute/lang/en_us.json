@@ -1,0 +1,29 @@
+{
+  "item.compute.copper_heat_spreader": "Copper Heat Spreader",
+  "item.compute.iron_plated_heat_spreader": "Iron Plated Heat Spreader",
+  "item.compute.encapsulant": "Encapsulant",
+
+  "item.compute.ceramic_blend": "Ceramic Blend",
+  "item.compute.unfired_ceramic_substrate": "Unfired Ceramic Substrate",
+  "item.compute.ceramic_substrate": "Ceramic Substrate",
+  "item.compute.traced_ceramic_substrate": "Traced Ceramic Substrate",
+
+  "item.compute.random_access_memory_module": "Random Access Memory",
+  "item.compute.read_only_memory_module": "Read Only Memory",
+  "item.compute.solid_state_memory_module": "",
+
+  "item.compute.advanced_integrated_circuit_die": "Advanced IC Die",
+
+  "item.compute.central_processing_unit": "Central Processing Unit",
+
+  "block.compute.rose_glass": "Rose Glass",
+  "block.compute.rose_glass_pane": "Rose Glass Pane",
+
+  "item.compute.computer": "Computer",
+
+  "item.compute.sodium_carbonate": "Sodium Carbonate",
+
+  "creativetab.compute.tab": "Create: Compute",
+
+  "itemGroup.compute": "Create: Compute"
+}

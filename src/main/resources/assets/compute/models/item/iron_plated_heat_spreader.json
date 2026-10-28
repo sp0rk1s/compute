@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "create_compute:item/iron_plated_heat_spreader"
+  }
+}

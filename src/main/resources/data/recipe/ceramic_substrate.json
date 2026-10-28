@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 1600,
+  "experience": 0.25,
+  "ingredient": {
+    "item": "create_compute:unfired_ceramic_substrate"
+  },
+  "result": {
+    "id": "create_compute:ceramic_substrate"
+  }
+}

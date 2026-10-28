@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "create_compute:item/advanced_integrated_circuit_die"
+  }
+}

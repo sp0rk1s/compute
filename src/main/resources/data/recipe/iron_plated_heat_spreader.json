@@ -1,0 +1,13 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    { "item": "create_compute:copper_heat_spreader" },
+    { "item": "minecraft:iron_nugget" },
+    { "type": "neoforge:single",
+      "fluid": "minecraft:water",
+      "amount": 1000 }
+  ],
+  "results": [
+    { "id": "create_compute:iron_plated_heat_spreader" }
+  ]
+}
