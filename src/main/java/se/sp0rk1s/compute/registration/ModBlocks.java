@@ -12,6 +12,12 @@ public final class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
       DeferredRegister.createBlocks(Compute.MOD_ID);
 
+
+    // BLOCK ENTITIES
+
+    public static final DeferredBlock<TapeDriveBlock> TAPE_DRIVE =
+      BLOCKS.registerBlock(TapeDriveBlock.ID, TapeDriveBlock::new);
+
     public static final DeferredBlock<ComputerBlock> COMPUTER =
-      BLOCKS.registerBlock("computer", ComputerBlock::new);
+      BLOCKS.registerBlock(ComputerBlock.ID, ComputerBlock::new);
 }

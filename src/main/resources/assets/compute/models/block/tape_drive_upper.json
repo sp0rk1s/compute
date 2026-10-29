@@ -1,0 +1,59 @@
+{
+  "textures": {
+    "particle": "create:block/andesite_block",
+    "upper_body": "compute:block/mainframe/mainframe_upper_body",
+    "upper_front": "compute:block/mainframe/tape_drive_upper_front",
+    "body": "create:block/andesite_block"
+  },
+  "render_type": "minecraft:cutout",
+  "elements": [
+    {
+      "name": "front_side",
+      "from": [0, 0, 0],
+      "to": [16, 16, 1],
+      "faces": {
+        "north": { "texture": "#upper_front", "cullface": "north" }
+      }
+    }, {
+      "name": "left_side",
+      "from": [0, 0, 0],
+      "to": [1, 16, 16],
+      "faces": {
+        "west":  { "texture": "#upper_body", "cullface": "west" },
+        "east":  { "texture": "#upper_body", "cullface": "north" }
+      }
+    }, {
+      "name": "right_side",
+      "from": [15, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "east":  { "texture": "#upper_body", "cullface": "east" },
+        "west":  { "texture": "#upper_body", "cullface": "north" }
+      }
+    }, {
+      "name": "back_side",
+      "from": [0, 0, 2],
+      "to": [16, 16, 16],
+      "faces": {
+        "south": { "texture": "#upper_body", "cullface": "south" },
+        "north": { "texture": "#upper_body", "cullface": "north" }
+      }
+    }, {
+      "name": "roof",
+      "from": [0, 11, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "up":    { "texture": "#body", "cullface": "up" },
+        "down":  { "texture": "#body", "cullface": "north" }
+      }
+    }, {
+      "name": "inner_floor",
+      "from": [0, 0, 0],
+      "to": [16, 1, 16],
+      "faces": {
+        "up":    { "texture": "#body", "cullface": "north" },
+        "down":  { "texture": "#body", "cullface": "north" }
+      }
+    }
+  ]
+}

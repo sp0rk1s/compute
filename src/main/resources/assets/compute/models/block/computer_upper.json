@@ -1,0 +1,23 @@
+{
+  "textures": {
+    "particle": "create:block/andesite_block",
+    "upper_body": "compute:block/mainframe/mainframe_upper_body",
+    "upper_front": "compute:block/mainframe/computer_upper_front",
+    "body": "create:block/andesite_block"
+  },
+  "render_type": "minecraft:cutout",
+  "elements": [
+    {
+      "name": "block",
+      "from": [0, 0, 0],
+      "to": [16, 16, 1],
+      "faces": {
+        "north": { "texture": "#upper_front", "cullface": "north" },
+        "east": { "texture": "#upper_body", "cullface": "east" },
+        "south": { "texture": "#upper_body", "cullface": "south" },
+        "west": { "texture": "#upper_body", "cullface": "west" },
+        "up": { "texture": "#body", "cullface": "up" }
+      }
+    }
+  ]
+}

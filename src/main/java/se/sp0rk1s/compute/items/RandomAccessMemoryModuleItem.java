@@ -16,7 +16,7 @@ import static se.sp0rk1s.compute.registration.ModComponents.MEMORY_SIZE;
 
 
 public class RandomAccessMemoryModuleItem extends Item {
-	public static String ID = "random_access_memory_module";
+	public static final String ID = "random_access_memory_module";
 
 	public RandomAccessMemoryModuleItem(Item.Properties properties) {
 		super(properties

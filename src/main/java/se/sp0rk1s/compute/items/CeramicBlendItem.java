@@ -9,7 +9,7 @@ import static se.sp0rk1s.compute.registration.ModComponents.MEMORY_SIZE;
 
 
 public class CeramicBlendItem extends Item {
-	public static String ID = "ceramic_blend";
+	public static final String ID = "ceramic_blend";
 
 	public CeramicBlendItem(Item.Properties properties) {
 		super(properties

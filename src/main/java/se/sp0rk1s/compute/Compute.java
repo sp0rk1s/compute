@@ -25,8 +25,8 @@ public class Compute {
 
     public Compute(IEventBus modBus, ModContainer container) {
         ModComponents.COMPONENTS.register(modBus);
-        ModItems.ITEMS.register(modBus);
         ModBlocks.BLOCKS.register(modBus);
+        ModItems.ITEMS.register(modBus);
         ModBlockEntities.BLOCK_ENTITIES.register(modBus);
         ModCreativeTabs.CREATIVE_TABS.register(modBus);
         container.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

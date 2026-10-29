@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "facing=north,half=lower": { "model": "compute:block/tape_drive_lower" },
+    "facing=east,half=lower": { "model": "compute:block/tape_drive_lower", "y": 90 },
+    "facing=south,half=lower": { "model": "compute:block/tape_drive_lower", "y": 180 },
+    "facing=west,half=lower": { "model": "compute:block/tape_drive_lower", "y": -90 },
+
+    "facing=north,half=upper": { "model": "compute:block/tape_drive_upper" },
+    "facing=east,half=upper": { "model": "compute:block/tape_drive_upper", "y": 90 },
+    "facing=south,half=upper": { "model": "compute:block/tape_drive_upper", "y": 180 },
+    "facing=west,half=upper": { "model": "compute:block/tape_drive_upper", "y": -90 }
+  }
+}

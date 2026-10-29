@@ -24,6 +24,8 @@ public class ModCreativeTabs {
             output.accept(ModItems.RANDOM_ACCESS_MEMORY_MODULE);
             output.accept(ModItems.CERAMIC_BLEND_ITEM);
             output.accept(ModItems.READ_ONLY_MEMORY_MODULE);
+            output.accept(ModItems.ADVANCED_INTEGRATED_CIRCUIT_DIE);
+            output.accept(ModItems.TAPE_DRIVE_ITEM);
         })
         .build());
 

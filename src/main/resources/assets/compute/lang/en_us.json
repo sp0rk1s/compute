@@ -20,10 +20,11 @@
   "block.compute.rose_glass_pane": "Rose Glass Pane",
 
   "item.compute.computer": "Computer",
+  "item.compute.tape_drive": "Tape Drive",
 
   "item.compute.sodium_carbonate": "Sodium Carbonate",
 
-  "creativetab.compute.tab": "Create: Compute",
+  "creativetab.compute.tab": "Compute",
 
-  "itemGroup.compute": "Create: Compute"
+  "itemGroup.compute": "Compute"
 }

@@ -2,48 +2,93 @@ package se.sp0rk1s.compute.blocks;
 
 // Minecraft
 import com.mojang.serialization.MapCodec;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
 // Compute
-import se.sp0rk1s.compute.blockentities.ComputerBlockEntity;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import se.sp0rk1s.compute.blockentities.TapeDriveBlockEntity;
+import se.sp0rk1s.compute.registration.ModBlockEntities;
 
 // Java
 import javax.annotation.Nullable;
 
 public class ComputerBlock extends BaseEntityBlock {
-    public static final VoxelShape SHAPE = Block.box(0, 0, 0, 13, 16, 16);
-    public static final MapCodec<ComputerBlock> CODEC = simpleCodec(ComputerBlock::new);
+    public static final String ID = "computer";
+    public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 16, 16);
+    public static final MapCodec<TapeDriveBlock> CODEC = simpleCodec(TapeDriveBlock::new);
+
+    public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final BooleanProperty ON = BooleanProperty.create("on");
 
     public ComputerBlock(BlockBehaviour.Properties properties) {
         super(properties
-          .destroyTime(2.0f)
-          .explosionResistance(10.0f)
-          .sound(SoundType.GRAVEL)
-          .lightLevel(state -> 7)
+          .destroyTime(4.0f)
+          .explosionResistance(3.0f)
+          .sound(SoundType.COPPER)
+        );
+
+        registerDefaultState(stateDefinition.any()
+          .setValue(HALF, DoubleBlockHalf.LOWER)
+          .setValue(FACING, Direction.NORTH)
+          .setValue(ON, false)
         );
     }
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(HALF, FACING, ON);
+    }
+
+    @Override
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+        if (!level.isClientSide) {
+            BlockPos other = state.getValue(HALF) == DoubleBlockHalf.LOWER ? pos.above() : pos.below();
+            BlockState otherState = level.getBlockState(other);
+            if (otherState.is(this)) {
+                level.setBlock(other, Blocks.AIR.defaultBlockState(), 35);
+            }
+        }
+        return super.playerWillDestroy(level, pos, state, player);
+    }
+
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+        BlockPos pos = ctx.getClickedPos();
+        Level level = ctx.getLevel();
+        if (pos.getY() >= level.getMaxBuildHeight() -1) { return null; }
+        if (!level.getBlockState(pos.above()).canBeReplaced(ctx)) { return null; }
+        return defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+        level.setBlock(pos.above(), state.setValue(HALF, DoubleBlockHalf.UPPER), 3);
     }
 
     @Override
@@ -54,12 +99,9 @@ public class ComputerBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new ComputerBlockEntity(pos, state);
-    }
-
-    @Override
-    protected RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
+        return state.getValue(HALF) == DoubleBlockHalf.LOWER
+          ? new TapeDriveBlockEntity(pos, state)
+          : null;
     }
 
     @Override
@@ -70,5 +112,10 @@ public class ComputerBlock extends BaseEntityBlock {
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+    }
+
+    @Override
+    protected RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
     }
 }
